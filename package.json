@@ -1,0 +1,45 @@
+{
+  "name": "tilescad.org",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "build": "npm run build--debug -- --no-source-maps",
+    "build--debug": "cd frontend && parcel build public/*.html public/*.jpg public/*.ico public/*.png public/*.svg public/*.webmanifest public/*.xml",
+    "start": "gunicorn -b 127.0.0.1:8080 server:app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Capstone-Team-4-UARK-2022/TileScad.org.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Capstone-Team-4-UARK-2022/TileScad.org/issues"
+  },
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 opera versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions"
+  ],
+  "homepage": "https://github.com/Capstone-Team-4-UARK-2022/TileScad.org#readme",
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.5.0",
+    "bootstrap": "^5.1.3",
+    "material-ui-color-picker": "^3.5.1",
+    "parcel-bundler": "^1.12.5",
+    "react": "^16.14.0",
+    "react-bootstrap": "^2.1.2",
+    "react-dom": "^16.14.0",
+    "react-p5": "^1.3.27",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.2.1",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.35.2"
+  }
+}

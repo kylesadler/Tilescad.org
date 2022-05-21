@@ -1,0 +1,13 @@
+Editor page
+blank editor with perferations. Click to add tiles. Can change tile type. One type per assembly
+Download design button
+
+Add a tile type page
+give it a name
+give a core length
+give a domain length
+
+the domain lengths on northwest - southeast tiles must match
+
+if tiles connect, the connecting glue lengths have to be the same
+
