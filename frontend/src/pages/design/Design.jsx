@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Snackbar, Typography } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
 import TileCanvas from "./TileCanvas";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import COLORS from "./Colors";
@@ -10,33 +10,18 @@ const defaultTileTypes = [
   {
     name: "A",
     color: Object.values(COLORS.TILE_TYPES)[0],
-    // naco: 30,
-    // saco: 32,
     coreLength: 10,
   },
   {
     name: "B",
     color: Object.values(COLORS.TILE_TYPES)[1],
-    // naco: 31,
-    // saco: 33,
     coreLength: 0,
   },
-  // { name: "B", color: COLORS.TILE_TYPES.BLUE },
-  // { name: "C", color: COLORS.TILE_TYPES.GREEN },
 ];
 
 defaultTileTypes.forEach((type, i) => {
   type.id = i;
   return type;
-});
-
-const defaultGridData = [...Array(16)].map((_, i) => {
-  return [
-    // defaultTileTypes[1].id,
-    // defaultTileTypes[2].id,
-
-    ...[...Array(14)].map((_, i) => {}),
-  ];
 });
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
@@ -48,19 +33,9 @@ const randInt = (max) => {
   return Math.floor(Math.random() * max);
 };
 
-const selectRandom = (arr) => {
-  return arr[randInt(arr.length)];
-};
 const defaultActiveTileType = defaultTileTypes[0].id;
 
 const getTileSize = (gridDim) => {
-  // want tile canvas to be ~70% screen width
-  // console.log("window.innerWidth");
-  // console.log(window.innerWidth);
-
-  //  why does this keep increasing??
-  // let width = window.innerWidth;
-
   const width1500 = useMediaQuery("(min-width:1500px)");
   const width1000 = useMediaQuery("(min-width:1000px)");
   const width800 = useMediaQuery("(min-width:800px)");
@@ -94,8 +69,6 @@ const dataIsValid = ({ grid, tileTypes }) => {
     let i = grid.length - 1;
     let j = colIdx;
     let coreLength = null;
-    // currently at location i, j
-    // console.log("checking right col", i, j);
 
     // while on board
     while (j >= 0 && i >= 0) {
@@ -109,7 +82,6 @@ const dataIsValid = ({ grid, tileTypes }) => {
       ) {
         if (coreLength == null) {
           coreLength = tileTypes[selfId].coreLength;
-          // console.log("core length", coreLength);
         } else if (coreLength != tileTypes[selfId].coreLength) {
           return false;
         }
@@ -128,7 +100,6 @@ const dataIsValid = ({ grid, tileTypes }) => {
     let coreLength = null;
 
     // currently at location i, j
-    // console.log("checking right col", i, j);
 
     while (j >= 0 && i >= 0) {
       const selfId = grid[i][j];
@@ -141,7 +112,6 @@ const dataIsValid = ({ grid, tileTypes }) => {
       ) {
         if (coreLength == null) {
           coreLength = tileTypes[selfId].coreLength;
-          // console.log("core length", coreLength);
         } else if (coreLength != tileTypes[selfId].coreLength) {
           return false;
         }
@@ -196,31 +166,18 @@ export default ({ defaultGridData, defaultGridDim }) => {
     setGridData(newData);
   };
 
-  // const tileSize = getTileSize();
   const tileSize = getTileSize(gridDim);
-  // console.log(tileSize, "tileSize");
-  // console.log(tileSize, "tileSize");
 
   return (
     <div>
       <div
         style={{
-          // padding: "20px 0px",
           width: "90%",
           margin: "auto",
           display: "flex",
           flexDirection: "column",
         }}
       >
-        {/* <div
-          style={{
-            display: "flex",
-            padding: 20,
-            justifyContent: "center",
-          }}
-        >
-          <Typography variant={"h3"}>Tile Assembly Editor</Typography>
-        </div> */}
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ width: gridDim * tileSize, padding: 15 }}>
             <TileCanvas
@@ -231,7 +188,6 @@ export default ({ defaultGridData, defaultGridDim }) => {
               tileTypes={tileTypes}
               activeTileType={activeTileType}
               onClick={(row, col) => {
-                // console.log("clicked", row, col);
                 updateGrid(row, col);
               }}
             />
@@ -299,7 +255,6 @@ export default ({ defaultGridData, defaultGridDim }) => {
                     })
                   );
 
-                  // console.log(newGD);
                   setGridData(newGD);
                 }
                 if (value >= 5) setGridDim(value);

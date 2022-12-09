@@ -1,7 +1,6 @@
 import React, { createRef } from "react";
-import { Button, styled, Typography, Card, Slider } from "@mui/material";
+import { Button, styled, Typography } from "@mui/material";
 import TileTypeCard from "./TileTypeCard";
-// import AddIcon from "@mui/icons-material/Add";
 
 import COLORS from "./Colors";
 import EditableField from "./EditableField";
@@ -29,7 +28,6 @@ export default ({
   setDomainLength,
   gridDim,
   setGridDim,
-  gridData,
   tileTypes,
   setTileTypes,
   activeTileType,
@@ -60,18 +58,14 @@ export default ({
           <ColorButton
             style={{ width: 200, padding: 10 }}
             onClick={() => {
-              // todo run validation logic
-
               onUpload()
                 .then((filename) => {
                   if (filename) {
-                    // console.log(filename);
                     filenameInput.current.setAttribute("value", filename);
                     hiddenForm.current.submit();
                   }
                 })
                 .catch((e) => {
-                  // todo give error messages
                   console.log(e);
                 });
             }}
@@ -83,19 +77,6 @@ export default ({
         </div>
 
         <div style={{ width: "100%", display: "flex" }}>
-          {/* <Typography style={{ display: "block" }}>Canvas Size</Typography>
-          <Slider
-            max={20}
-            min={5}
-            defaultValue={gridDim}
-            step={1}
-            valueLabelDisplay="auto"
-            onChange={(event) => {
-              console.log(event);
-              setGridDim(event.target.value);
-            }}
-          /> */}
-
           <EditableField
             label={"Canvas Size"}
             value={gridDim}
@@ -115,7 +96,6 @@ export default ({
           alignItems: "center",
           justifyContent: "center",
           overflow: "scroll",
-          //   maxHeight: // 500, for some reason this doesn't work?
         }}
       >
         {tileTypes.map((tileType, i) => {

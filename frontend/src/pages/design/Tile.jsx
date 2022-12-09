@@ -18,11 +18,6 @@ export default ({ width, data, onClick, activeTileType }) => {
         justifyContent: "center",
         alignItems: "center",
         cursor: "pointer",
-        // "&:hover": {
-        //   // backgroundColor: "green",
-        //   // opacity: [0.9, 0.8, 0.7],
-        //   // color: label ? "black" : "rgba(100,100,100,0.5)",
-        // },
       }}
       onClick={onClick}
       onMouseEnter={

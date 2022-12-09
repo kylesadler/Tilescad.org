@@ -37,7 +37,6 @@ class Tile {
 
 export default (props) => {
   const canvasSize = 800;
-  // let tileDim = 16;
 
   const [tileDim, setTileDim] = useState(16);
 
@@ -48,8 +47,6 @@ export default (props) => {
   let tiles = []; // tiles[numTiles][numTiles] grid
 
   const setup = (p5, canvasParentRef) => {
-    // use parent to render the canvas in this ref
-    // (without that p5 will render the canvas outside of your component)
     p5.createCanvas(canvasSize, canvasSize).parent(canvasParentRef);
 
     tileSize = canvasSize / tileDim;
@@ -60,7 +57,6 @@ export default (props) => {
       }
       tiles.push(tileRow);
     }
-    // console.log(tiles);
   };
 
   const draw = (p5) => {
@@ -71,10 +67,6 @@ export default (props) => {
         tiles[i][j].draw(p5);
       }
     }
-
-    // NOTE: Do not use setState in the draw function or in functions that are executed
-    // in the draw function...
-    // please use normal variables or class properties for these purposes
   };
 
   const mousePressed = (event) => {
@@ -110,7 +102,6 @@ export default (props) => {
             <Form.Select
               aria-label="Default select example"
               onChange={(event) => {
-                // tileDim = event.target.value;
                 setTileDim(event.target.value);
               }}
             >

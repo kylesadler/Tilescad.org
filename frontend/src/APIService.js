@@ -7,7 +7,6 @@ exports.uploadDesign = (data) => {
   const postData = JSON.stringify(data);
 
   const options = {
-    // port: useHTTPS ? 443 : 80,
     path: "/api/upload-design",
     method: "POST",
     headers: {
@@ -20,20 +19,12 @@ exports.uploadDesign = (data) => {
 
   return new Promise((resolve, reject) => {
     const request = client.request(options, (res) => {
-      // console.log("statusCode:", res.statusCode);
-      // console.log("headers:", res.headers);
-
       if (res.statusCode != 200) reject(res.statusCode);
 
-      res.on("data", (d) => {
-        // console.log("d");
-        // console.log(d);
-        resolve(d);
-      });
+      res.on("data", resolve);
     });
 
     request.on("error", (e) => {
-      // console.error("e");
       console.error(e);
       reject(e);
     });

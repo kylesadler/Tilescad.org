@@ -11,10 +11,6 @@ export default ({
   tileTypes,
   activeTileType,
 }) => {
-  //gridData [[{ lable, color, }]]
-  // onClick = (rowNum, colNum) => {}
-  // width, height are in terms of tiles
-
   return (
     <Card
       style={{
